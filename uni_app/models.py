@@ -17,7 +17,7 @@ class Semester(models.Model):
     
 class Courses(models.Model):
     name = models.CharField(max_length=25)
-    professor = models.ForeignKey(Professor) # one instructor can have multiple classes
+    professor = models.ForeignKey(Professor, on_delete=models.SET_NULL) # one instructor can have multiple classes
     semester = models.ForeignKey(Semester, on_delete=models.CASCADE) # one Semester can have multiple classes
     
     def __str__(self):
